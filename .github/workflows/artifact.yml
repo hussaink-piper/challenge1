@@ -1,0 +1,26 @@
+name: artifact
+
+env: 
+  FILE_NAME : 'artifact'
+
+on: [push]
+
+jobs:
+  upload-artifact:
+    name: Upload
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+  
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with: 
+          name: ${{ env.ARTIFACT_NAME }}
+          path: ./${{ env.FILE_NAME }}
+       
+  
+# create an environment variable for the artifact name
+# create one job w/ two steps
+#  actions/checkout & actions/upload-artifact
+
